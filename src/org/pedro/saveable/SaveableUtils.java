@@ -156,7 +156,7 @@ public abstract class SaveableUtils
   public static Double readDouble(final DataInputStream in) throws IOException
   {
     final double read = in.readDouble();
-    return (Double.compare(read, Double.NaN) == 0 ? null : Double.valueOf(read));
+    return (Double.isNaN(read) ? null : Double.valueOf(read));
   }
 
   /**
