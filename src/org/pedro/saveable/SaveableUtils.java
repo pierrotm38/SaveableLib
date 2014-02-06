@@ -107,6 +107,17 @@ public abstract class SaveableUtils
    * @param value
    * @throws IOException
    */
+  public static void writeLong(final DataOutputStream out, final Long value) throws IOException
+  {
+    out.writeLong(value == null ? Long.MIN_VALUE : value.longValue());
+  }
+
+  /**
+   * 
+   * @param out
+   * @param value
+   * @throws IOException
+   */
   public static void writeInteger(final DataOutputStream out, final Integer value) throws IOException
   {
     out.writeInt(value == null ? Integer.MIN_VALUE : value.intValue());
@@ -157,6 +168,18 @@ public abstract class SaveableUtils
   {
     final double read = in.readDouble();
     return (Double.isNaN(read) ? null : Double.valueOf(read));
+  }
+
+  /**
+   * 
+   * @param in
+   * @return
+   * @throws IOException
+   */
+  public static Long readLong(final DataInputStream in) throws IOException
+  {
+    final long read = in.readLong();
+    return (read == Long.MIN_VALUE ? null : Long.valueOf(read));
   }
 
   /**
